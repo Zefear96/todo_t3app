@@ -10,6 +10,8 @@ interface TodoFiltersState {
     sortField: "id" | "title" | "createdDate",
     sortDirection: "asc" | "desc"
   ) => void;
+  user: string;
+  setUser: (user: string) => void;
 }
 
 export const useTodoFiltersState = create<TodoFiltersState>(
@@ -22,6 +24,10 @@ export const useTodoFiltersState = create<TodoFiltersState>(
     sortDirection: "asc",
     setSort: (sortField, sortDirection) => {
       set({ sortField, sortDirection });
+    },
+    user: "",
+    setUser: (user) => {
+      set({ user });
     },
   })
 );

@@ -33,10 +33,7 @@ export const todoRouter = createTRPCRouter({
               direction: z.enum(["asc", "desc"]),
             })
             .optional(),
-          // sortField: z.string().optional(),
-          // sortDirection: z
-          //   .union([z.literal("asc"), z.literal("desc")])
-          //   .optional(),
+          user: z.string().optional(),
         })
         .default({})
     )
@@ -59,23 +56,13 @@ export const todoRouter = createTRPCRouter({
         });
       }
 
-      // if (input.sortField === "id") {
-      //   orderBy.push({
-      //     id: input.sortDirection ?? "desc",
-      //   });
-      // }
-
-      // if (input.sortField === "-id") {
-      //   orderBy.push({
-      //     id: input.sortDirection ?? "asc",
-      //   });
-      // }
-
-      // if (input.sortField === "createdDate") {
-      //   orderBy.push({
-      //     [input.sortField]: input.sortDirection ?? "desc",
-      //   });
-      // }
+      if (input.user) {
+        filters.push({
+          user: {
+            email: input.user, // Фильтровать задачи по владельцу с определенным email
+          },
+        });
+      }
 
       return ctx.prisma.todo.findMany({
         where: {

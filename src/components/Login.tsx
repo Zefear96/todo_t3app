@@ -9,14 +9,14 @@ const Login = () => {
 
   return (
     <div className=" mx-0 flex items-center justify-center">
-      <div className=" flex-col">
+      <div>
         <Avatar
           src={session?.user?.image}
           size="md"
           radius="xl"
           className=" mx-auto"
         />
-        <p className="mt-2">{session?.user.email}</p>
+        <p>{session?.user.name}</p>
       </div>
       <button
         onClick={session ? () => void signOut() : () => void signIn()}

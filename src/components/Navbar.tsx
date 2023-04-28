@@ -31,7 +31,7 @@ const Navbar = () => {
       >
         {dark ? <IconSun size="1.1rem" /> : <IconMoonStars size="1.1rem" />}
       </ActionIcon>
-      <div className="mx-auto my-10 flex items-center justify-center">
+      <div className="mx-auto my-10 flex items-center justify-around">
         <div className=" search mx-5 w-1/2">
           {/* <form onSubmit={handleSubmit}> */}
           <div className="relative">
